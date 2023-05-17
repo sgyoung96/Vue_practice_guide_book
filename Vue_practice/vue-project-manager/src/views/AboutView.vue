@@ -1,7 +1,8 @@
-<template></teemplate>
-<script>/nexport default {
+<template></template>
+<script>
+export default {
   name: '',
-  components: {}. 
+  components: {}, 
   data() {
     return {
       sampleData: ''

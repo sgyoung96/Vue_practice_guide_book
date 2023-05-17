@@ -19,7 +19,7 @@
 	"Genereate Basic Vue Colde" : {
 		"prefix": "vue-start",
 		"body": [
-			"<template></teemplate>\n<script>/nexport default {\n\tname: '',\n\tcomponents: {}. \n\tdata() {\n\t\treturn {\n\t\t\tsampleData: ''\n\t\t};\n\t},\n\tbeforeCreate() {}, \n\tcreated() {}, \n\tbeforeMount() {},\n\tmounted() {}, \n\tbeforeUpdate() {}, \n\tupdated() {}, \n\tbeforeUnmount(){}, \n\tunmounted() {}, \n\tmethods: {} \n}\n</script>"
+			"<template></template>\n<script>\nexport default {\n\tname: '',\n\tcomponents: {}, \n\tdata() {\n\t\treturn {\n\t\t\tsampleData: ''\n\t\t};\n\t},\n\tbeforeCreate() {}, \n\tcreated() {}, \n\tbeforeMount() {},\n\tmounted() {}, \n\tbeforeUpdate() {}, \n\tupdated() {}, \n\tbeforeUnmount(){}, \n\tunmounted() {}, \n\tmethods: {} \n}\n</script>"
 		],
 		"description": "Generate Basic Vue Code"
 	}
