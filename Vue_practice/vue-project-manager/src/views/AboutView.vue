@@ -1,21 +1,17 @@
-<template></template>
+<template>
+  <div>
+    <h1>Hello About Page</h1>
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  </div>
+</template>
+
 <script>
+import HelloWorld from '../components/HelloWorld.vue'
+
 export default {
-  name: '',
-  components: {}, 
-  data() {
-    return {
-      sampleData: ''
-    };
-  },
-  beforeCreate() {}, 
-  created() {}, 
-  beforeMount() {},
-  mounted() {}, 
-  beforeUpdate() {}, 
-  updated() {}, 
-  beforeUnmount(){}, 
-  unmounted() {}, 
-  methods: {} 
+  name: 'HomeView',
+  components: {
+    HelloWorld
+  }
 }
 </script>
