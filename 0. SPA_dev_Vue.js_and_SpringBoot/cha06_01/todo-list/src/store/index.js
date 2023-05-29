@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import { createStore } from 'vuex'
+import Vuex from 'vuex'
 
+Vue.use(Vuex)
 
-
-export default createStore({
+export default new Vuex.Store({
   state: {
   },
   getters: {
