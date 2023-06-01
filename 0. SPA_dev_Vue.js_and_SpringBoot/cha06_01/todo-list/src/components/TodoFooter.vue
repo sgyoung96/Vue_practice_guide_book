@@ -1,12 +1,16 @@
 <template>
     <div>
-        <h1>TodoFooter</h1>
+        <button v-on:click="clearTodo">모두삭제</button>
     </div>
 </template>
 
 <script>
     export default {
-
+        methods: {
+            clearTodo() {
+                this.$emit('removeAll')
+            }
+        }
     }
 </script>
 
