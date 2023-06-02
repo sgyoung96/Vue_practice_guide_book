@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodo="addTodo"></TodoInput>
-    <TodoList v-bind:todoItems="todoItems" v-on:removeTodo="removeTodo"></TodoList>
-    <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
+    <TodoInput v-on:addTodo="onAddTodo"></TodoInput>
+    <TodoList v-bind:todoItems="todoItems" v-on:removeTodo="onRemoveTodo"></TodoList>
+    <TodoFooter v-on:removeAll="onClearAll"></TodoFooter>
   </div>
 </template>
 
@@ -12,6 +12,7 @@ import TodoHeader from './components/TodoHeader.vue'
 import TodoInput from './components/TodoInput.vue'
 import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -22,26 +23,51 @@ export default {
     "TodoFooter": TodoFooter
   },
   computed: {
-    todoItems() {
-      //return store.state.todoItems
-      return this.$store.state.todoItems
-    }
+    // todoItems() {
+    //   //return store.state.todoItems
+    //   return this.$store.state.todoItems
+    // }
+    ...mapState([
+      'todoItems'
+    ])
   },
   methods: {
-    clearAll() {
-      //this.todoITems=[]
-      //store.dispatch('clearAll')
-      this.$store.dispatch('clearAll')
+    // clearAll() {
+    //   //this.todoITems=[]
+    //   //store.dispatch('clearAll')
+    //   this.$store.dispatch('clearAll')
+    // },
+    // addTodo(todoItem) {
+    //   //this.todoItems.push(todoItem)
+    //   //store.dispatch('addTodo', todoItem)
+    //   this.$store.dispatch('addTodo', todoItem)
+    // },
+    // removeTodo(todoItem, index) {
+    //   //this.todoItems.splice(index, 1)
+    //   //store.dispatch('removeTodo', index)
+    //   this.$store.dispatch('removeTodo', index)
+    // }
+    ...mapActions([
+      'clearAll',
+      'addTodo',
+      'removeTodo',
+      'save',
+      'restore'
+    ]),
+    onClearAll() {
+      this.clearAll()
+      this.save()
     },
-    addTodo(todoItem) {
-      //this.todoItems.push(todoItem)
-      //store.dispatch('addTodo', todoItem)
-      this.$store.dispatch('addTodo', todoItem)
+    onAddTodo(todoItem) {
+      this.addTodo(todoItem)
+      this.save()
     },
-    removeTodo(todoItem, index) {
-      //this.todoItems.splice(index, 1)
-      //store.dispatch('removeTodo', index)
-      this.$store.dispatch('removeTodo', index)
+    onRemoveTodo(todoItem, index) {
+      this.removeTodo(index)
+      this.save()
+    },
+    created() {
+      this.restore()
     }
   }
 }
