@@ -6,7 +6,7 @@ import {
     RESTORE
 } from './mutation-types'
 
-export default {
+export default { 
     save({state}) {
         const data = {
             todoItems: state.todoItems
