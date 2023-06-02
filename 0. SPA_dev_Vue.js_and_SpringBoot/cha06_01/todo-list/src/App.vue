@@ -2,7 +2,10 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput v-on:addTodo="onAddTodo"></TodoInput>
-    <TodoList v-bind:todoItems="todoItems" v-on:removeTodo="onRemoveTodo"></TodoList>
+    <TodoList v-bind:todoItems="todoItems" 
+              v-on:removeTodo="onRemoveTodo" 
+              v-on:updateTodo="onEditTodo">
+    </TodoList>
     <TodoFooter v-on:removeAll="onClearAll"></TodoFooter>
   </div>
 </template>
@@ -52,13 +55,16 @@ export default {
       'addTodo',
       'removeTodo',
       'save',
-      'restore'
+      'restore',
+      'editTodo'
     ]),
     onClearAll() {
       this.clearAll()
       this.save()
     },
-    onAddTodo(todoItem) {
+    onAddTodo(content) {
+      const isEditing = false
+      const todoItem = {isEditing, content}
       this.addTodo(todoItem)
       this.save()
     },
@@ -68,6 +74,10 @@ export default {
     },
     created() {
       this.restore()
+    },
+    onEditTodo(content, index) {
+      this.editTodo({index, content})
+      this.save()
     }
   }
 }

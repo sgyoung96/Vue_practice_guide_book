@@ -3,7 +3,8 @@ import {
     ADD_TODO,
     REMOVE_TODO,
     CLEAR_ALL,
-    RESTORE
+    RESTORE,
+    EDIT_TODO
 } from './mutation-types'
 
 export default { 
@@ -27,5 +28,8 @@ export default {
         if(data) {
             commit(RESTORE, JSON.parse(data))
         }
+    },
+    editTodo({commit}, payload) {
+        commit(EDIT_TODO, payload)
     }
 }
